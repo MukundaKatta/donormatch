@@ -1,65 +1,43 @@
-# DonorMatch
+# donormatch
 
-Nonprofit Donor CRM with intelligent donor-campaign matching powered by machine learning.
+**DonorMatch — Nonprofit Donor CRM. AI-powered donor matching and fundraising optimization.**
 
-## Features
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-- **Donor Management**: Full CRUD operations, search, and segmentation for donor records
-- **Campaign Tracking**: Manage fundraising campaigns with goals, progress tracking, and analytics
-- **Engagement Scoring**: Score donor engagement using recency, frequency, and monetary (RFM) analysis
-- **ML-Powered Matching**: Match donors to campaigns based on interest, capacity, and giving history
-- **Donor Scoring**: Compute donor lifetime value and propensity to give
-- **Donor Segmentation**: Cluster donors into segments (major, mid-level, small, lapsed, new)
-- **Simulation & Reporting**: Generate synthetic data and produce rich analytics reports
-
-## Installation
-
+## Install
 ```bash
-pip install -e .
+pip install -e ".[dev]"
 ```
 
-## Usage
+## Quick Start
+```python
+from src.core import Donormatch
+ instance = Donormatch()
+r = instance.process(input="test")
+```
 
+## CLI
 ```bash
-# Run the CLI
-donormatch --help
-
-# Run a simulation with synthetic data
-donormatch simulate --donors 100 --campaigns 5
-
-# Generate a report
-donormatch report
-
-# Match donors to campaigns
-donormatch match --campaign-id <id>
+python -m src status
+python -m src run --input "data"
 ```
 
-## Project Structure
+## API
+| Method | Description |
+|--------|-------------|
+| `process()` | Process |
+| `analyze()` | Analyze |
+| `transform()` | Transform |
+| `validate()` | Validate |
+| `export()` | Export |
+| `get_stats()` | Get stats |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
 
+## Test
+```bash
+pytest tests/ -v
 ```
-src/donormatch/
-  cli.py              - Click-based CLI interface
-  models.py           - Pydantic data models (Donor, Campaign, Donation, Engagement)
-  simulator.py        - Synthetic data generation
-  report.py           - Rich analytics reports
-  crm/
-    donor.py           - DonorManager with CRUD, search, segmentation
-    campaign.py        - CampaignManager for fundraising campaigns
-    engagement.py      - EngagementTracker with RFM scoring
-  matching/
-    matcher.py         - DonorMatcher using ML for donor-campaign matching
-    scorer.py          - DonorScorer for lifetime value and propensity scoring
-    segmenter.py       - DonorSegmenter for clustering donors
-```
 
-## Dependencies
-
-- numpy
-- scikit-learn
-- pydantic
-- click
-- rich
-
-## Author
-
-Mukunda Katta
+## License
+(c) 2026 Officethree Technologies. All Rights Reserved.
